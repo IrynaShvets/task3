@@ -8,10 +8,10 @@
 session_start();
 $_SESSION['refresh'] = $_SESSION['refresh'] ?? 0;
 
-if (isset($_SESSION)) {
+if (isset($_SESSION['refresh'])) {
     echo $_SESSION['refresh'] += 1;
-    }
-?>
+} 
+ ?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -26,7 +26,7 @@ if (isset($_SESSION)) {
 <body>
     <h3>
         <?php
-        if (!isset($_SESSION)) { ?>
+        if (!isset($_SESSION['refresh'])) { ?>
             Ви ще не оновлювали сторінку.
         <?php
         } ?>

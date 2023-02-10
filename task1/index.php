@@ -3,6 +3,7 @@
 
 <?php
 session_start();
+
 $_SESSION['test'] = 'test';
 
 $test = 'test';

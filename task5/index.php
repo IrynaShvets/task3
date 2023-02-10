@@ -4,7 +4,10 @@
 <?php
 session_start();
 
-$_SESSION['time'] = time();
+If (empty($_SESSION['time'])) {
+    $_SESSION['time'] = time();
+}
+$timeRefresh = time() - $_SESSION['time'];
+echo $timeRefresh;
 
-echo $_SESSION['time'];
 ?>

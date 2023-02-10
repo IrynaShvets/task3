@@ -3,19 +3,6 @@
 На form.php зробіть форму з полями 'Ім'я', 'Вік', 'Місто'. 
 При заході на form.php зробіть так, щоб поля 'Вік' і 'Місто' вже були заполнены. -->
 
-<?php
-session_start();
-
-$_SESSION['city'] = '';
-$_SESSION['age'] = '';
-
-if ($_SESSION['city']) {
-    $city = $_SESSION['city'];
-    $age = $_SESSION['age'];
-}
-
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -30,44 +17,23 @@ if ($_SESSION['city']) {
 <body>
     <ul class="menu">
         <li>
-            <a href="?name=home">Home</a>
+            <a href="index.php">Home</a>
         </li>
         <li>
-            <a href="?name=form">Form</a>
+            <a href="form.php">Form</a>
         </li>
     </ul>
 
-    <div class="content">
-        <?php
+    <div class="container">
+        <h1>Please fill in form</h1>
 
-        $site_name = $_GET['name'] ?? '0';
-        switch ($site_name) {
-            case 'home':
-                require_once "index.php";
-                break;
+        <form action="form.php" method="post">
+            <input type="text" name="city" placeholder="City" class="input"><br>
+            <input type="number" name="age" placeholder="Age" class="input"><br>
+            <input type="submit" name="submit" value="Submit" class="btn">
+        </form>
 
-            case 'form':
-                require_once "form.php";
-                break;
-
-            default:
-                echo "Сторінка за замовчуванням";
-        }
-        ?>
     </div>
-
-    <?php if ($site_name === 'home') { ?>
-        <div class="container">
-            <h1>Please fill in form</h1>
-
-            <form action="form.php" method="post">
-                <input type="text" name="city" placeholder="City" required class="input"><br>
-                <input type="number" name="age" placeholder="Age" required class="input"><br>
-                <input type="submit" name="submit" value="Submit" class="btn">
-            </form>
-
-        </div>
-    <?php } ?>
 
 </body>
 

@@ -23,6 +23,20 @@ var_dump(session_destroy());
 
 <body>
 
+    <nav>
+        <ul class="menu">
+            <li>
+                <a href="index.php">Home</a>
+            </li>
+            <li>
+                <a href="form.php">Form</a>
+            </li>
+            <li>
+                <a href="logout.php">Logout</a>
+            </li>
+        </ul>
+    </nav>
+
     <div class="container">
         <h1>Logout</h1>
     </div>

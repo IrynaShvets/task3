@@ -1,19 +1,6 @@
 <!-- 9  Додайте в попереднє завдання сторінку logout.php. 
 При заході на неї руйнуйте сесію користувача. -->
 
-<?php
-session_start();
-
-$_SESSION['city'] = '';
-$_SESSION['age'] = '';
-
-if ($_SESSION['city']) {
-    $city = $_SESSION['city'];
-    $age = $_SESSION['age'];
-}
-
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -26,55 +13,28 @@ if ($_SESSION['city']) {
 </head>
 
 <body>
-    <nav>
-        <ul class="menu">
-            <li>
-                <a href="?name=home">Home</a>
-            </li>
-            <li>
-                <a href="?name=form">Form</a>
-            </li>
-            <li>
-                <a href="?name=logout">Logout</a>
-            </li>
-        </ul>
-    </nav>
+    <ul class="menu">
+        <li>
+            <a href="index.php">Home</a>
+        </li>
+        <li>
+            <a href="form.php">Form</a>
+        </li>
+        <li>
+            <a href="logout.php">Logout</a>
+        </li>
+    </ul>
 
+    <div class="container">
+        <h1>Please fill in form</h1>
 
-    <div class="content">
-        <?php
+        <form action="form.php" method="post">
+            <input type="text" name="city" placeholder="City" class="input"><br>
+            <input type="number" name="age" placeholder="Age" class="input"><br>
+            <input type="submit" name="submit" value="Submit" class="btn">
+        </form>
 
-        $site_name = $_GET['name'] ?? '0';
-
-        switch ($site_name) {
-
-            case 'home':
-                require_once "index.php";
-                break;
-
-            case 'form':
-                require_once "form.php";
-                break;
-
-            case 'logout':
-                require_once "logout.php";
-                break;
-        }
-        ?>
     </div>
-
-    <?php if ($site_name === 'home') { ?>
-        <div class="container">
-            <h1>Please fill in form</h1>
-
-            <form action="form.php" method="post">
-                <input type="text" name="city" placeholder="City" required class="input"><br>
-                <input type="number" name="age" placeholder="Age" required class="input"><br>
-                <input type="submit" name="submit" value="Submit" class="btn">
-            </form>
-
-        </div>
-    <?php } ?>
 
 </body>
 

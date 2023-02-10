@@ -6,12 +6,15 @@
 
 <?php
 session_start();
-$_SESSION['country'] = '';
 
-if ($_SESSION['country']) {
+if (empty($_SESSION['country'])) {
     $country = $_SESSION['country'];
 }
 
+if (isset($_POST['submit'])) {
+    $country = $_POST['country'];
+    $_SESSION['country'] = $_POST['country'];
+}
 ?>
 
 <!DOCTYPE html>
@@ -26,44 +29,25 @@ if ($_SESSION['country']) {
 </head>
 
 <body>
-    <ul class="menu">
-        <li>
-            <a href="?name=home">Home</a>
-        </li>
-        <li>
-            <a href="?name=test">Test</a>
-        </li>
-    </ul>
+    <nav>
+        <ul class="menu">
+            <li>
+                <a href="index.php">Home</a>
+            </li>
+            <li>
+                <a href="test.php">Test</a>
+            </li>
+        </ul>
+    </nav>
 
-    <div class="content">
-        <?php
+    <div class="container">
+        <h1>Please indicate your country?</h1>
 
-        $site_name = $_GET['name'] ?? '0';
-        switch ($site_name) {
-            case 'home':
-                require_once "index.php";
-                break;
-
-            case 'test':
-                require_once "test.php";
-                break;
-
-            default:
-                echo "Сторінка за замовчуванням";
-        }
-        ?>
+        <form action="index.php" method="post">
+            <input type="text" name="country" placeholder="Country" required class="input"><br>
+            <input type="submit" name="submit" value="Submit" class="btn">
+        </form>
     </div>
-
-    <?php if ($site_name === 'home') { ?>
-        <div class="container">
-            <h1>Please indicate your country?</h1>
-
-            <form action="test.php" method="post">
-                <input type="text" name="country" placeholder="Country" required class="input"><br>
-                <input type="submit" name="submit" value="Submit" class="btn">
-            </form>
-        </div>
-    <?php } ?>
 
 </body>
 

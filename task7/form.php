@@ -1,11 +1,14 @@
 <?php
 session_start();
 
+if (isset($_SESSION['email'])) {
+    $email = $_SESSION['email'];
+}
+
 if (isset($_POST['submit'])) {
     $email = $_POST['email'];
     $_SESSION['email'] = $_POST['email'];
 }
-
 ?>
 
 <!DOCTYPE html>
@@ -20,6 +23,14 @@ if (isset($_POST['submit'])) {
 </head>
 
 <body>
+    <ul class="menu">
+        <li>
+            <a href="index.php">Home</a>
+        </li>
+        <li>
+            <a href="form.php">Form</a>
+        </li>
+    </ul>
 
     <div class="container">
         <h1> Register form</h1>

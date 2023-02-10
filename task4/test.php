@@ -1,13 +1,5 @@
 <?php
 session_start();
-
-// $country = "";
-
-if (isset($_POST['submit'])) {
-    $country = $_POST['country'];
-    $_SESSION['country'] = $_POST['country'];
-}
-
 ?>
 
 <!DOCTYPE html>
@@ -22,9 +14,19 @@ if (isset($_POST['submit'])) {
 </head>
 
 <body>
+    <nav>
+        <ul class="menu">
+            <li>
+                <a href="index.php">Home</a>
+            </li>
+            <li>
+                <a href="test.php">Test</a>
+            </li>
+        </ul>
+    </nav>
+
     <div>
         <p> Country: <?php echo $_SESSION['country'] ?> </p>
-
         <hr>
     </div>
 

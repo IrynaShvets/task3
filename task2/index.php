@@ -17,34 +17,15 @@ $_SESSION['name'] = 'Ivan';
     <title>Document</title>
 </head>
 <body>
-    <ul class="menu">
+    <nav>
+       <ul class="menu">
         <li>
-            <a href="?name=home">Home</a>
+            <a href="index.php">Home</a>
         </li>
         <li>
-            <a href="?name=session">Session</a>
+            <a href="session.php">Session</a>
         </li>
-    </ul>
-
-    <div class="content">
-        <?php
-
-         $site_name = $_GET['name']??'0';
-         switch ($site_name) {
-            case 'home':
-                require_once "index.php";
-                break;
-            
-            case 'session':
-                require_once "session.php";
-                break;
-            
-                default:
-                echo "Сторінка за замовчуванням";
-         }
-    ?>
-    </div>
-    
-    
+       </ul> 
+    </nav>
 </body>
 </html>
