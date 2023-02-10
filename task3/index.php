@@ -6,12 +6,14 @@
 <?php
 
 session_start();
-$_SESSION['refresh'] = $_SESSION['refresh'] ?? 0;
 
-if (isset($_SESSION['refresh'])) {
+if (!isset($_SESSION['refresh'])) {
+    $_SESSION['refresh'] = 0;
+} else {
     echo $_SESSION['refresh'] += 1;
-} 
- ?>
+}
+
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -26,7 +28,7 @@ if (isset($_SESSION['refresh'])) {
 <body>
     <h3>
         <?php
-        if (!isset($_SESSION['refresh'])) { ?>
+        if ($_SESSION['refresh'] === 0) { ?>
             Ви ще не оновлювали сторінку.
         <?php
         } ?>
