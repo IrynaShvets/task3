@@ -10,8 +10,6 @@ session_start();
 
 if (isset($_GET['id'])) {
     $id = $_GET['id'];
-    $title = $_GET['title'];
-    $image = $_GET['image'];
     $price = $_GET['price'];
     
     if (!empty($_SESSION['cart'])) {
@@ -22,14 +20,15 @@ if (isset($_GET['id'])) {
       } else {
         $item = [
           'id' => $_GET['id'],
+          'price' => $_GET['price'],
           'quantity' => 1
         ];
         $_SESSION['cart'][$id] = $item;
-
       }
     } else {
       $item = [
         'id' => $_GET['id'],
+        'price' => $_GET['price'],
         'quantity' => 1
       ];
       $_SESSION['cart'][$id] = $item;

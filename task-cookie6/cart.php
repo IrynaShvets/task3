@@ -1,4 +1,4 @@
-<?php 
+<?php
 session_start();
 ?>
 
@@ -35,26 +35,33 @@ session_start();
     </header>
 
     <main>
-        <table class="table">
+        <div>
             <a href="empty-cart.php" class="btn">Empty Cart</a>
-            
-                <?php
-                if (isset($_SESSION['cart'])) :
-                    $i = 1;
-                    foreach ($_SESSION['cart'] as $cart) :
-                ?>
+
+            <?php
+            if (isset($_SESSION['cart'])) :
+                $i = 1;
+                $sum = [];
+                foreach ($_SESSION['cart'] as $cart) :
+                    $sumProduct = $cart['price'] * $cart['quantity'];
+                    array_push($sum, $sumProduct);
+                    $sumArray = array_sum($sum);
+            ?>
                     <div>
                         <p><?php echo $i; ?>. </p>
-                        <p> Номер товару<?= $cart['id']; ?></p>
+                        <p> Номер товару: <?= $cart['id']; ?></p>
+                        <p> Сума: <?= $sumProduct ?></p><?php ?>
                         <input type="number" value="<?= $cart['quantity']; ?>" name="quantity" min="1">
                     </div>
                 <?php
-                        $i++;
-                    endforeach;
-                endif;
+                    $i++;
+                endforeach;
                 ?>
-            </tbody>
-        </table>
+                <p> Загальна сума до оплати: <?= $sumArray; ?></p>
+            <?php
+            endif;
+            ?>
+        </div>
     </main>
     <footer class="footer">
         <div>
